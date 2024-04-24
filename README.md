@@ -49,6 +49,41 @@ msf >  nmap -sT 192.168.237.0/24 -p1-1000
 ## OUTPUT:
 ![image](https://github.com/Hariharan-061102/Metasploit-for-reconnaissance/assets/93427270/3b5d0b57-028f-42a2-aaaa-173df17229bb)
 
+Metasploit has a multitude of scanning modules built in. If we open another terminal, we can navigate to Metasploit's auxiliary modules and list all the scanner modules.
+```
+cd /usr/share /metasploit-framework/modules/auxiliary
+kali > ls -l
+```
+
+## OUTPUT:
+![image](https://github.com/Hariharan-061102/Metasploit-for-reconnaissance/assets/93427270/374108e3-0804-4885-9554-8be1c5277ea2)
+
+Search is a powerful command in Metasploit that you can use to find what you want to locate. 
+```
+msf >search name:Microsoft type:exploit
+```
+## OUTPUT:
+![image](https://github.com/Hariharan-061102/Metasploit-for-reconnaissance/assets/93427270/d4fa23d6-d4cc-4853-85d6-66307e8c103f)
+
+The info command provides information regarding a module or platform.
+
+## OUTPUT:
+![image](https://github.com/Hariharan-061102/Metasploit-for-reconnaissance/assets/93427270/41548c2f-7414-45be-ab33-241bc85c28e8)
+
+Before beginning, set up the Metasploit database by starting the PostgreSQL server and initialize msfconsole database as follows:
+```
+systemctl start postgresql
+msfdb init
+```
+## MYSQL ENUMERATION
+Find the IP address of the Metasploitable machine first. Then, use the db_nmap command in msfconsole with Nmap flags to scan the MySQL database at 3306 port.
+```
+db_nmap -sV -sC -p 3306 <metasploitable_ip_address>
+```
+## OUTPUT:
+![image](https://github.com/Hariharan-061102/Metasploit-for-reconnaissance/assets/93427270/7138d821-0612-453b-8eac-11f2923ba638)
+
+
 Use the db-nmap command to scan and save the results into Metasploit's postgresql attached database. In that way, you can use those results in the exploitation stage later.
 scan the targets with the command db_nmap as follows.
 ```
@@ -66,6 +101,8 @@ search type:auxiliary mysql
 ```
 ## OUTPUT:
 ![image](https://github.com/Hariharan-061102/Metasploit-for-reconnaissance/assets/93427270/b334ac2c-ad84-4b97-b945-489ff3d08440)
+
+
 
 use the auxiliary/scanner/mysql/mysql_version module by typing the module name or associated number to scan MySQL version details.
 ```

